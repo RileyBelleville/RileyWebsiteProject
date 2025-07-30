@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-language" content="en-us" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estimator | M&G Fencing Inc.</title>
+  <meta name="description" content="Fence cost estimator tool for M&G Fencing Inc." />
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- Inter Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <!-- Global styles for animations, forms and footers -->
+  <link rel="stylesheet" href="css/global.css" />
+  <!-- Remove inline fade styles and scripts; handled by global CSS/JS -->
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="hidden md:block bg-gray-100 text-gray-700 text-sm">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between">
+      <p>Sales, Repairs & Installation of All Makes of Fences & Guide Rails</p>
+      <div class="space-x-4">
+        <span>Tel: (705) 983-4411</span>
+        <span>Toll Free: 1-800-790-4689</span>
+        <a href="mailto:fencing@mgfencing.ca" class="underline">fencing@mgfencing.ca</a>
+      </div>
+    </div>
+  </div>
+  <!-- HEADER -->
+  <header class="bg-green-700 text-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-3xl font-bold">M&amp;G Fencing Inc.</a>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="hover:text-green-300">Home</a>
+        <a href="install.html" class="hover:text-green-300">About Us</a>
+        <a href="index.html#quote" class="hover:text-green-300">Get Quote</a>
+        <a href="styles.html" class="hover:text-green-300">Styles</a>
+        <a href="estimate.html" class="hover:text-green-300 font-semibold">Estimator</a>
+      </nav>
+      <button data-nav-toggle aria-label="Toggle navigation" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <nav data-mobile-menu class="hidden bg-green-700 text-white md:hidden border-t">
+      <a href="index.html" class="block px-4 py-2 hover:bg-green-600">Home</a>
+      <a href="install.html" class="block px-4 py-2 hover:bg-green-600">About Us</a>
+      <a href="index.html#quote" class="block px-4 py-2 hover:bg-green-600">Get Quote</a>
+      <a href="styles.html" class="block px-4 py-2 hover:bg-green-600">Styles</a>
+      <a href="estimate.html" class="block px-4 py-2 hover:bg-green-600 font-semibold">Estimator</a>
+    </nav>
+  </header>
+  <!-- Hero Section -->
+  <section id="estimator-hero" class="bg-gradient-to-r from-green-800 to-green-700 text-white fade-section">
+    <div class="max-w-3xl mx-auto text-center py-24 px-6">
+      <h1 class="text-5xl md:text-6xl font-semibold mb-4">Fence Cost Simulator</h1>
+      <div class="w-20 h-1 bg-white mx-auto mb-8 rounded"></div>
+      <p class="text-xl text-green-200 mb-8">Disclaimer: This is an estimate only and not a final price or official quote.</p>
+    </div>
+  </section>
+  <!-- ESTIMATOR SECTION -->
+  <main class="max-w-3xl mx-auto px-6 py-16">
+    <div class="bg-white p-8 rounded-xl shadow-md space-y-6">
+      <div>
+        <label class="block mb-2 font-medium">Fence Type</label>
+        <select id="type" class="w-full p-3 border rounded">
+          <option value="picket">Picket (Wood)</option>
+          <option value="privacy">Privacy</option>
+          <option value="vinyl">Vinyl</option>
+          <option value="chainlink">Chain-link</option>
+          <option value="wrought_iron">Wrought Iron</option>
+          <option value="guide_rail">High Cable Guide Rail Tension</option>
+          <option value="cable_rail">Cable Guide Rail</option>
+          <option value="steel_rail">Steel Beam Guide Rail</option>
+        </select>
+      </div>
+      <!-- Height Selection -->
+      <div id="height-section">
+        <label class="block mb-2 font-medium">Height (ft) <span class="text-red-600">*</span></label>
+        <div class="flex space-x-6">
+          <label class="inline-flex items-center"><input type="radio" name="height" value="3" required class="form-radio text-green-600" /><span class="ml-2">3ft</span></label>
+          <label class="inline-flex items-center"><input type="radio" name="height" value="4" class="form-radio text-green-600" /><span class="ml-2">4ft</span></label>
+          <label class="inline-flex items-center"><input type="radio" name="height" value="5" class="form-radio text-green-600" /><span class="ml-2">5ft</span></label>
+          <label class="inline-flex items-center"><input type="radio" name="height" value="6" class="form-radio text-green-600" /><span class="ml-2">6ft</span></label>
+        </div>
+      </div>
+      <div>
+        <label class="block mb-2 font-medium">Perimeter Length (ft)</label>
+        <input id="length" type="number" min="10" placeholder="Min 10 ft, e.g. 150" class="w-full p-3 border rounded" />
+      </div>
+      <div id="color-option" class="hidden"><label class="block mb-2 font-medium">Chain-link Color</label><select id="chain-color" class="w-full p-3 border rounded"><option value="galvanized">Galvanized</option><option value="black">Black Coated</option><option value="brown">Brown Coated</option><option value="green">Green Coated</option></select></div>
+      <div id="slat-option" class="hidden"><label class="inline-flex items-center"><input type="checkbox" id="privacy-slats" class="form-checkbox text-green-600" /><span class="ml-2">Include Privacy Slats (+extra cost)</span></label></div>
+      <div id="gate-option" class="hidden"><label class="block mb-2 font-medium">Number of Gates</label><input id="gate-count" type="number" min="0" placeholder="e.g. 2" class="w-full p-3 border rounded" /></div>
+      <button id="calculate" class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">Calculate Estimate</button>
+      <div id="result" class="text-xl font-semibold text-center mt-4"></div>
+    </div>
+  </main>
+  <!-- FOOTER -->
+  <footer>
+    <div class="max-w-6xl mx-auto px-6 text-center space-y-2">
+      <p>M&amp;G Fencing Inc. | Serving Ontario, Canada | 826 Bruno St, Azilda ON | <a href="mailto:fencing@mgfencing.ca" class="underline">fencing@mgfencing.ca</a> | <a href="tel:+17059834411" class="underline">(705) 983-4411</a></p>
+      <!-- Use data-year for automatic copyright year injection -->
+      <p>&copy; <span data-year></span> M&amp;G Fencing Inc. All rights reserved.</p>
+    </div>
+  </footer>
+  <!-- Load core functionality (fades, nav toggle, section reveal, dynamic year) -->
+  <script src="js/main.js"></script>
+  <script>
+    // Options toggle
+    const typeSelect = document.getElementById('type'), colorOpt = document.getElementById('color-option'), slatOpt = document.getElementById('slat-option'), gateOpt = document.getElementById('gate-option'), heightSec = document.getElementById('height-section');
+    function updateOptions(){
+      const val=typeSelect.value;
+      colorOpt.classList.toggle('hidden', val!=='chainlink');
+      if(val==='privacy') slatOpt.classList.add('hidden');
+      else if(['vinyl','chainlink'].includes(val)) slatOpt.classList.remove('hidden');
+      else { slatOpt.classList.add('hidden'); document.getElementById('privacy-slats').checked=false; }
+      gateOpt.classList.toggle('hidden', !['picket','privacy','chainlink','vinyl'].includes(val));
+      if(gateOpt.classList.contains('hidden')) document.getElementById('gate-count').value='';
+      heightSec.classList.toggle('hidden',['guide_rail','cable_rail','steel_rail'].includes(val));
+      if(heightSec.classList.contains('hidden')) document.querySelectorAll('input[name="height"]').forEach(r=>r.checked=false);
+    }
+    typeSelect.addEventListener('change', updateOptions); updateOptions();
+
+    // Calculation with height & min length
+    document.getElementById('calculate').addEventListener('click', ()=>{
+      const length=parseFloat(document.getElementById('length').value)||0;
+      if(length<10) return alert('Please enter at least 10 ft of perimeter.');
+      const height=parseFloat(document.querySelector('input[name="height"]:checked')?.value)||4;
+      const mult={3:0.75,4:1,5:1.25,6:1.5}[height];
+      const rates={picket:25,privacy:25,vinyl:30,chainlink:20,wrought_iron:50,guide_rail:45,cable_rail:40,steel_rail:50};
+      let rate=rates[typeSelect.value]*mult;
+      if(['vinyl','chainlink'].includes(typeSelect.value)&&document.getElementById('privacy-slats').checked) rate+=5*mult;
+      const gates=parseInt(document.getElementById('gate-count').value)||0;
+      let cost=rate*length + gates*250;
+      document.getElementById('result').textContent=`Estimated Cost: ${cost.toLocaleString('en-CA',{style:'currency',currency:'CAD'})}`;
+    });
+  </script>
+</body>
+</html>

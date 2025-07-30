@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Kyanna was here. -->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-language" content="en-us" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M&G Fencing Inc. | Quality Fencing in Ontario</title>
+  <meta name="description" content="M&G Fencing provides durable, affordable residential and commercial fencing in Ontario. Request a free quote today." />
+  <meta name="keywords" content="fence, fences, installation, fencing, repairs, Ontario, M&G Fencing" />
+  <meta name="author" content="M&G Fencing Inc." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="M&G Fencing Inc. | Quality Fencing in Ontario" />
+  <meta property="og:description" content="Durable, affordable fencing solutions across Ontario." />
+  <meta property="og:image" content="https://www.mgfencing.ca/images/og-image.jpg" />
+  <meta property="og:url" content="https://www.mgfencing.ca/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- Inter Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <!-- Global styles for animations, forms and footers -->
+  <link rel="stylesheet" href="css/global.css" />
+
+    <style>
+      /* Page-specific styling for the hero section. Global rules live in css/global.css. */
+      .hero-section {
+        background: url('images/project7.jpg') center/cover no-repeat #000;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+      .hero-overlay {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 24px 40px;
+        border-radius: 12px;
+        max-width: 90%;
+      }
+      .hero-logo {
+        width: auto;
+        margin-bottom: 6px;
+        object-fit: contain;
+      }
+    </style>
+</head>
+
+<body>
+ <!-- Top Bar (hidden on mobile) -->
+<div class="hidden md:block bg-gray-100 text-gray-700 text-sm z-50">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between">
+    <p>Sales, Repairs & Installation of All Makes of Fences & Guide Rails</p>
+    <div class="space-x-4">
+      <span>Tel: (705) 983-4411</span>
+      <span>Toll Free: 1-800-790-4689</span>
+      <a href="mailto:fencing@mgfencing.ca" class="underline">fencing@mgfencing.ca</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header & Navigation -->
+<header class="bg-green-700 text-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="index.html" class="text-3xl font-bold">M&amp;G Fencing Inc.</a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center space-x-6">
+      <a href="index.html"   class="hover:text-green-300 font-semibold">Home</a>
+      <a href="install.html" class="hover:text-green-300">About Us</a>
+      <a href="#quote"       class="hover:text-green-300">Get Quote</a>
+      <a href="styles.html"       class="hover:text-green-300">Styles</a>
+      <a href="estimate.html" class="hover:text-green-300">Estimator</a>
+    </nav>
+
+    <!-- Mobile Toggle -->
+    <button id="nav-toggle" data-nav-toggle aria-label="Toggle navigation" class="md:hidden focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Nav -->
+  <nav id="mobile-menu" data-mobile-menu class="hidden bg-green-700 text-white md:hidden border-t">
+    <a href="index.html"        class="block px-4 py-2 hover:bg-green-600 font-semibold">Home</a>
+    <a href="install.html"      class="block px-4 py-2 hover:bg-green-600">About Us</a>
+    <a href="#quote"            class="block px-4 py-2 hover:bg-green-600">Get Quote</a>
+    <a href="styles.html"    class="block px-4 py-2 hover:bg-green-600">Styles</a>
+    <a href="estimate.html"     class="block px-4 py-2 hover:bg-green-600">Estimator</a>
+  </nav>
+</header>
+
+<!-- removed inline nav toggle script: handled globally in js/main.js -->
+
+
+  <!-- HERO -->
+  <section id="installations" class="hero-section fade-section">
+    <div class="hero-overlay flex flex-col items-center justify-center text-center">
+      <a href="https://mgfencing.ca" target="_blank" rel="noopener noreferrer" class="fade-section mb-6" style="transition-delay: 200ms;">
+        <img src="images/logo.png" alt="M&G Fencing Logo" class="hero-logo" loading="lazy" />
+      </a>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 fade-section" style="transition-delay: 400ms;">
+        Many Styles. All Built Right.
+      </h1>
+      <p class="text-xl mb-6 max-w-2xl mx-auto fade-section" style="transition-delay: 600ms;">
+        Top-quality residential and commercial fencing solutions across Ontario.
+      </p>
+      <div
+        class="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 fade-section"
+        style="transition-delay: 800ms;"
+      >
+        <a
+          href="#quote"
+          class="btn-scale inline-block bg-green-600 text-white py-3 px-6 rounded-xl text-lg transition transform"
+        >
+          Get a Free Quote
+        </a>
+        <a
+          href="#gallery"
+          class="btn-scale inline-block bg-white text-green-600 py-3 px-6 rounded-xl text-lg transition transform"
+        >
+          See Our Work
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="py-20 bg-gray-100 text-center fade-section">
+    <h2 class="text-3xl font-bold mb-10">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
+      <div>
+        <img src="images/residential-icon.svg" alt="Residential Fencing" class="mx-auto mb-4 w-16 h-16" loading="lazy" />
+        <h3 class="text-xl font-semibold">Residential Fencing</h3>
+      </div>
+      <div>
+        <img src="images/commercial-icon.svg" alt="Commercial Fencing" class="mx-auto mb-4 w-16 h-16" loading="lazy" />
+        <h3 class="text-xl font-semibold">Commercial &amp; Industrial</h3>
+      </div>
+      <div>
+        <img src="images/gates-icon.svg" alt="Custom Gates" class="mx-auto mb-4 w-16 h-16" loading="lazy" />
+        <h3 class="text-xl font-semibold">Custom Gates</h3>
+      </div>
+      <div>
+        <img src="images/repair-icon.svg" alt="Repairs & Maintenance" class="mx-auto mb-4 w-16 h-16" loading="lazy" />
+        <h3 class="text-xl font-semibold">Repairs & Maintenance</h3>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHY CHOOSE US -->
+  <section class="py-20 bg-gray-200 text-center fade-section">
+    <h2 class="text-3xl font-bold mb-10">Why Choose M&amp;G?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto px-6 text-lg">
+      <div>✓ 40+ Years of Experience</div>
+      <div>✓ Licensed &amp; Insured</div>
+      <div>✓ Quick Turnaround</div>
+      <div>✓ 1-Year Warranty</div>
+    </div>
+    <p class="mt-10 italic text-gray-600 px-4 text-center max-w-full md:max-w-xl mx-auto">
+      Sales, repairs, and installation of all makes of fences and guide rails.
+    </p>
+  </section>
+  
+<!-- GALLERY -->
+<section id="gallery" class="py-20 bg-gray-100 text-center fade-section">
+  <h2 class="text-3xl font-bold mb-10">Our Recent Work</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto px-4">
+    <button
+      type="button"
+      class="relative w-full h-80 md:h-64 focus:outline-none z-10"
+      onclick="openLightbox(0)">
+      <img
+        src="images/commerical-3.jpg"
+        alt="Fence project 1"
+        class="w-full h-full object-cover rounded-xl shadow-md"
+        loading="lazy" />
+    </button>
+
+    <button
+      type="button"
+      class="relative w-full h-80 md:h-64 focus:outline-none z-10"
+      onclick="openLightbox(1)">
+      <img
+        src="images/project2.jpg"
+        alt="Fence project 2"
+        class="w-full h-full object-cover rounded-xl shadow-md"
+        loading="lazy" />
+    </button>
+
+    <!-- repeat for the rest -->
+    <button type="button" class="relative w-full h-80 md:h-64 focus:outline-none z-10" onclick="openLightbox(2)">
+      <img src="images/project3.jpg" alt="Fence project 3"
+           class="w-full h-full object-cover rounded-xl shadow-md" loading="lazy" />
+    </button>
+    <button type="button" class="relative w-full h-80 md:h-64 focus:outline-none z-10" onclick="openLightbox(3)">
+      <img src="images/highway-1.jpg" alt="Highway guardrail installation"
+           class="w-full h-full object-cover rounded-xl shadow-md" loading="lazy" />
+    </button>
+    <button type="button" class="relative w-full h-80 md:h-64 focus:outline-none z-10" onclick="openLightbox(4)">
+      <img src="images/image5.jpg" alt="Fence project 5"
+           class="w-full h-full object-cover rounded-xl shadow-md" loading="lazy" />
+    </button>
+    <button type="button" class="relative w-full h-80 md:h-64 focus:outline-none z-10" onclick="openLightbox(5)">
+      <img src="images/highway2.jpg" alt="Crash cushion installation"
+           class="w-full h-full object-cover rounded-xl shadow-md" loading="lazy" />
+    </button>
+  </div>
+</section>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true"
+     class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
+  <div class="relative">
+    <!-- Prev Button -->
+    <button id="prev-btn"
+            aria-label="Previous image"
+            class="absolute left-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 
+                   text-white text-3xl p-3 rounded-full focus:outline-none 
+                   focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black z-10">
+      &larr;
+    </button>
+
+    <!-- Image -->
+   
+    <!-- Updated Image -->
+    <img
+      id="lightbox-img"
+      src=""
+      alt="Expanded project photo"
+      class="w-[90vw] h-auto max-h-[90vh] object-contain
+             md:w-[80vw] md:max-h-[80vh]
+             opacity-0 transition-opacity duration-500"
+    />
+
+    <!-- Next Button -->
+    <button id="next-btn"
+            aria-label="Next image"
+            class="absolute right-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 
+                   text-white text-3xl p-3 rounded-full focus:outline-none 
+                   focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black z-10">
+      &rarr;
+    </button>
+
+    <!-- Close Button -->
+    <button id="lightbox-close"
+            aria-label="Close lightbox"
+            class="absolute top-0 right-0 mt-2 mr-2 bg-black bg-opacity-50 hover:bg-opacity-75 
+                   text-white text-4xl p-2 rounded-full focus:outline-none 
+                   focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black z-10">
+      &times;
+    </button>
+  </div>
+</div>
+
+<script>
+  const images = [
+    'images/commerical-3.jpg',
+    'images/project2.jpg',
+    'images/project3.jpg',
+    'images/highway-1.jpg',
+    'images/image5.jpg',
+    'images/highway2.jpg'
+  ];
+  let currentIndex = 0;
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const closeBtn = document.getElementById('lightbox-close');
+
+  function openLightbox(index) {
+    // disable lightbox on mobile screens under 768px
+    if (window.innerWidth < 768) return;
+
+    currentIndex = index;
+    lbImg.style.opacity = 0;
+    lbImg.src = images[currentIndex];
+    lb.classList.remove('hidden');
+    lbImg.onload = () => lbImg.style.opacity = 1;
+  }
+
+  function closeLightbox() {
+    lb.classList.add('hidden');
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    openLightbox(currentIndex);
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    openLightbox(currentIndex);
+  }
+
+  prevBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    showPrev();
+  });
+  nextBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    showNext();
+  });
+  closeBtn.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => {
+    if (e.target === lb) closeLightbox();
+  });
+  
+  // Keyboard support
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('hidden')) {
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'Escape') closeLightbox();
+    }
+  });
+  // Expose the lightbox opener globally for inline onclick handlers
+  window.openLightbox = openLightbox;
+</script>
+
+
+<section id="quote" class="py-20 bg-green-700 text-white fade-section">
+  <div class="max-w-lg mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-4 text-center">Ready to Build? Let’s Talk.</h2>
+    <p class="text-lg mb-8 text-center">Get Your Free Estimate</p>
+    <form class="bg-white text-gray-800 rounded-xl p-6 space-y-4">
+      <input type="text"   name="name"       placeholder="Full Name"             class="w-full p-3 border rounded" required />
+      <input type="email"  name="email"      placeholder="Email"                 class="w-full p-3 border rounded" required />
+      <input type="tel"    name="phone"      placeholder="Phone"                 class="w-full p-3 border rounded" required />
+      <input type="text"   name="address"    placeholder="Address"               class="w-full p-3 border rounded" required />
+      <textarea           name="project"    placeholder="Tell us about your project…" class="w-full p-3 border rounded h-32" required></textarea>
+      <label class="block text-gray-700">
+        Do you need installation?
+        <select name="installation" class="w-full mt-1 p-3 border rounded" required>
+          <option value="" disabled selected>Select one</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </label>
+      <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl text-lg transition">Submit</button>
+    </form>
+  </div>
+</section>
+
+
+  <!-- LOCATION MAP -->
+  <section id="location" class="py-20 bg-gray-100 text-center fade-section">
+    <h2 class="text-3xl font-bold mb-6">Our Location</h2>
+    <div class="max-w-3xl mx-auto px-6">
+      <iframe
+      src="https://maps.google.com/maps?q=M%26G%20Fencing%20Inc.,%20826%20Bruno%20St%20Azilda%20ON&t=k&z=16&ie=UTF8&iwloc=A&output=embed"
+      width="100%"
+      height="450"
+      title="M&G Fencing location map"
+      style="border:1px solid #ccc;"
+      allowfullscreen
+      loading="lazy">
+</iframe>
+
+    </div>
+  </section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="py-20 bg-gray-100 text-center fade-section">
+  <h2 class="text-3xl font-bold mb-10">What Our Clients Say</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-6">
+    
+    <!-- Review 1 -->
+    <blockquote class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center">
+      <div class="flex mb-3 text-yellow-500 text-2xl">
+        ★★★★★
+      </div>
+      <p class="text-gray-800 italic">“Outstanding craftsmanship! Andrew and his team installed our residential fence flawlessly. Highly recommend.”</p>
+      <footer class="mt-4 font-semibold text-gray-700">
+        — Emily R., Sudbury, ON  
+        <span class="block text-sm text-gray-500">April 2, 2025</span>
+      </footer>
+    </blockquote>
+
+    <!-- Review 2 -->
+    <blockquote class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center">
+      <div class="flex mb-3 text-yellow-500 text-2xl">
+        ★★★★★
+      </div>
+      <p class="text-gray-800 italic">“Professional, on-time, and the guide rails look amazing. Excellent customer service from start to finish.”</p>
+      <footer class="mt-4 font-semibold text-gray-700">
+        — David L., North Bay, ON  
+        <span class="block text-sm text-gray-500">March 20, 2025</span>
+      </footer>
+    </blockquote>
+
+    <!-- Review 3 -->
+    <blockquote class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center">
+      <div class="flex mb-3 text-yellow-500 text-2xl">
+        ★★★★★
+      </div>
+      <p class="text-gray-800 italic">“Competitive pricing and top-notch installation. We love our new backyard fence!”</p>
+      <footer class="mt-4 font-semibold text-gray-700">
+        — Linda M., Greater Sudbury, ON  
+        <span class="block text-sm text-gray-500">February 28, 2025</span>
+      </footer>
+    </blockquote>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+  <footer class="py-10">
+    <div class="max-w-6xl mx-auto px-6 text-center space-y-2">
+      <p>
+        M&amp;G Fencing Inc. | Serving Ontario, Canada | 826 Bruno St, Azilda ON |
+        <a href="mailto:fencing@mgfencing.ca" class="underline">fencing@mgfencing.ca</a> |
+        <a href="tel:+17059834411" class="underline">(705) 983-4411</a>
+      </p>
+      <p>&copy; <span data-year></span> M&amp;G Fencing Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Core behaviours: fade transitions, navigation toggle, dynamic year, section reveal -->
+  <script src="js/main.js"></script>
+</body>
+</html>

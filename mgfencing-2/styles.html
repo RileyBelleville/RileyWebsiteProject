@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-language" content="en-us" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products | M&amp;G Fencing Inc.</title>
+  <meta name="description" content="Explore our full range of fencing and guardrail products at M&amp;G Fencing Inc." />
+  <meta name="keywords" content="products, chain link, guard rail, steel beam, fencing" />
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <!-- Inter Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"/>
+
+  <!-- Global styles for animations, forms and footers -->
+  <link rel="stylesheet" href="css/global.css"/>
+
+  <!-- Page-specific styles can be added here if necessary -->
+</head>
+
+<body>
+   <!-- Top Bar (hidden on mobile) -->
+<div class="hidden md:block bg-gray-100 text-gray-700 text-sm z-50">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between">
+    <p>Sales, Repairs & Installation of All Makes of Fences & Guide Rails</p>
+    <div class="space-x-4">
+      <span>Tel: (705) 983-4411</span>
+      <span>Toll Free: 1-800-790-4689</span>
+      <a href="mailto:fencing@mgfencing.ca" class="underline">fencing@mgfencing.ca</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header & Navigation -->
+<header class="bg-green-700 text-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="index.html" class="text-3xl font-bold">M&amp;G Fencing Inc.</a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center space-x-6">
+      <a href="index.html"   class="hover:text-green-300">Home</a>
+      <a href="install.html" class="hover:text-green-300">About Us</a>
+      <a href="index.html#quote"       class="hover:text-green-300">Get Quote</a>
+      <a href="styles.html"       class="hover:text-green-300 font-semibold">Styles</a>
+      <a href="estimate.html" class="hover:text-green-300">Estimator</a>
+    </nav>
+
+    <!-- Mobile Toggle -->
+    <button data-nav-toggle aria-label="Toggle navigation" class="md:hidden focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Nav -->
+  <nav data-mobile-menu class="hidden bg-green-700 text-white md:hidden border-t">
+    <a href="index.html"        class="block px-4 py-2 hover:bg-green-600">Home</a>
+    <a href="install.html"      class="block px-4 py-2 hover:bg-green-600">About Us</a>
+    <a href="index.html#quote"            class="block px-4 py-2 hover:bg-green-600">Get Quote</a>
+    <a href="styles.html"    class="block px-4 py-2 hover:bg-green-800 font-semibold">Styles</a>
+    <a href="estimate.html"     class="block px-4 py-2 hover:bg-green-600">Estimator</a>
+  </nav>
+</header>
+<!-- Our Styles Section -->
+<section id="styles" class="bg-gray-50 py-24 fade-section">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-5xl md:text-6xl font-extrabold text-green-800 mb-4">
+      Our Styles
+    </h2>
+    <div class="w-20 h-1 bg-green-700 mx-auto mb-8 rounded"></div>
+    <p class="text-lg text-gray-600">
+      Browse our selection of fencing and guide-rail systems—from classic wrought iron to modern cable rail.
+    </p>
+  </div>
+</section>
+
+
+
+<!-- Products Grid -->
+<section class="py-16 fade-section">
+  <div class="max-w-6xl mx-auto px-4 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    <!-- Chain Link Card -->
+    <a href="chainlink.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+      <img src="images/chain-galvanized.jpg" alt="Chain Link" class="w-full h-48 object-cover rounded-t-xl"/>
+      <div class="p-6">
+        <h2 class="text-2xl font-semibold mb-2">Chain Link Fencing</h2>
+        <p class="text-gray-600">
+          A versatile, low-maintenance barrier—galvanized or vinyl-coated—offering security with optional privacy slats.
+        </p>
+      </div>
+    </a>
+    <!-- Board on Board -->
+    <a href="boardonboard.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+        <img src="images/boardonboard-pine.jpg" alt="Board-on-Board Privacy Fence" class="w-full h-48 object-cover rounded-t-xl"/>
+        <div class="p-6">
+        <h2 class="text-2xl font-semibold mb-2">Board-on-Board Privacy Fence</h2>
+        <p class="text-gray-600">
+            Overlapping vertical boards form a solid privacy wall—available in cedar, treated pine, or low-maintenance composite.
+        </p>
+    </div>
+    </a>
+
+    <!-- Wrought Iron & Privacy -->
+    <a href="wroughtiron.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+      <img src="images/wroughtIron.jpg" alt="Wrought Iron Fencing" class="w-full h-48 object-cover rounded-t-xl"/>
+      <div class="p-6">
+        <h2 class="text-2xl font-semibold mb-2">Wrought Iron Fencing</h2>
+        <p class="text-gray-600">
+          Elegant ornamental panels or solid privacy boards, custom-fabricated for timeless style and unmatched durability.
+        </p>
+      </div>
+    </a>
+
+        <a href="vinylprivacy.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+      <img src="images/vinylprivacy2.jpg" alt="Vinyl Privacy Fencing" class="w-full h-48 object-cover rounded-t-xl"/>
+      <div class="p-6">
+        <h2 class="text-2xl font-semibold mb-2">Vinyl Privacy Fences</h2>
+        <p class="text-gray-600">
+            Solid panels for total seclusion, with optional lattice accents and color choices.
+        </p>
+      </div>
+    </a>
+  
+    <!-- Steel Beam Card -->
+    <a href="guardrail.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+      <img src="images/highway-6.jpg" alt="Steel Beam Guide Rail" class="w-full h-48 object-cover rounded-t-xl"/>
+      <div class="p-6">
+        <h2 class="text-2xl font-semibold mb-2">Guard Rail</h2>
+        <p class="text-gray-600">
+          Ontario-approved W-beam &amp; Thrie-beam sections engineered to deflect and absorb vehicular impact.
+        </p>
+      </div>
+    </a>
+</a>
+
+<!-- Gates -->
+<a href="gates.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+  <img src="images/gates-3.jpg" alt="Swing Gate with Keypad Operator" class="w-full h-48 object-cover rounded-t-xl"/>
+  <div class="p-6">
+    <h2 class="text-2xl font-semibold mb-2">Gates &amp; Operators</h2>
+    <p class="text-gray-600">
+      Robust slide and swing gates equipped with keypads, remotes, and built-in safety sensors for secure access control.
+    </p>
+  </div>
+</a>
+
+
+<a href="farmfencing.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+  <img src="images/Farm-3.jpg" alt="Farm Fencing Solutions" class="w-full h-48 object-cover rounded-t-xl"/>
+  <div class="p-6">
+    <h2 class="text-2xl font-semibold mb-2">Farm Fencing</h2>
+    <p class="text-gray-600">
+      Heavy-duty woven and high-tensile wire styles with 6'–10' T-posts, plus matching gates and fittings to secure your livestock and perimeter.
+    </p>
+  </div>
+</a>
+
+<!-- Kennels Card -->
+<a href="kennels.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+  <img src="images/kennels-2.jpg" alt="Custom Kennel Enclosure" class="w-full h-48 object-cover rounded-t-xl"/>
+  <div class="p-6">
+    <h2 class="text-2xl font-semibold mb-2">Kennels</h2>
+    <p class="text-gray-600">
+      Heavy-gauge steel kennel panels, fully customizable in size and finish to secure pets in any environment.
+    </p>
+  </div>
+</a>
+ 
+<!-- Bollards -->
+<a href="bollards.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+  <img src="images/bollards-1.jpg" alt="Safety Bollards" class="w-full h-48 object-cover rounded-t-xl"/>
+  <div class="p-6">
+    <h2 class="text-2xl font-semibold mb-2">Bollards</h2>
+    <p class="text-gray-600">
+      Heavy-duty steel posts to shield equipment and pedestrians from vehicle collisions.
+    </p>
+  </div>
+</a>
+
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
+      <p>
+        M&amp;G Fencing Inc. | <span data-year></span> | 826 Bruno St, Azilda ON |
+        <a href="mailto:fencing@mgfencing.ca" class="underline">fencing@mgfencing.ca</a> |
+        <a href="tel:+17059834411" class="underline">(705) 983-4411</a>
+      </p>
+      <p>&copy; <span data-year></span> M&amp;G Fencing Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Core behaviours: fade transitions, navigation toggle, dynamic year, section reveal -->
+  <script src="js/main.js"></script>
+</body>
+</html>

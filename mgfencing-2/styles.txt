@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-language" content="en-us" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products | M&amp;G Fencing Inc.</title>
+  <meta name="description" content="Explore our full range of fencing and guardrail products at M&amp;G Fencing Inc." />
+  <meta name="keywords" content="products, chain link, guard rail, steel beam, fencing" />
+
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <!-- Inter Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"/>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    body.fade-in { opacity: 1; }
+    body.fade-out { opacity: 0; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => document.body.classList.add('fade-in'));
+  </script>
+</head>
+
+<body>
+  <!-- Header & Navigation -->
+  <header class="bg-green-700 text-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-3xl font-bold">M&amp;G Fencing Inc.</a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-green-300">Home</a>
+        <a href="install.html" class="hover:text-green-300">Installations</a>
+        <a href="estimator.html" class="hover:text-green-300">Estimator</a>
+        <a href="products.html" class="text-white font-semibold border-b-2 border-white">Products</a>
+      </nav>
+      <button id="nav-toggle" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Nav -->
+    <nav id="mobile-menu" class="hidden bg-green-700 text-white md:hidden border-t">
+      <a href="index.html" class="block px-4 py-2 hover:bg-green-600">Home</a>
+      <a href="install.html" class="block px-4 py-2 hover:bg-green-600">Installations</a>
+      <a href="estimator.html" class="block px-4 py-2 hover:bg-green-600">Estimator</a>
+      <a href="products.html" class="block px-4 py-2 hover:bg-green-600 font-semibold">Products</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gray-100 py-20 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Our Products</h1>
+      <p class="text-lg text-gray-700">Browse our selection of fencing and guardrail systems.</p>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-4 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      <!-- Chain Link Card -->
+      <a href="chainlink.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+        <img src="images/chain-galvanized.jpg" alt="Chain Link" class="w-full h-48 object-cover rounded-t-xl"/>
+        <div class="p-6">
+          <h2 class="text-2xl font-semibold mb-2">Chain Link Fencing</h2>
+          <p class="text-gray-600">Durable, cost-effective perimeter fencing with optional coatings and slats.</p>
+        </div>
+      </a>
+      <!-- Steel Beam Card -->
+      <a href="guardrail.html" class="block bg-white rounded-xl shadow hover:shadow-lg transition">
+        <img src="images/guard-steel-beam.jpg" alt="Steel Beam Guide Rail" class="w-full h-48 object-cover rounded-t-xl"/>
+        <div class="p-6">
+          <h2 class="text-2xl font-semibold mb-2">Steel Beam Guide Rail</h2>
+          <p class="text-gray-600">Ontario-approved W-beam & Thrie-beam sections for maximum roadway safety.</p>
+        </div>
+      </a>
+      <!-- Placeholder for Future Product -->
+      <div class="block bg-white rounded-xl shadow opacity-50 cursor-not-allowed">
+        <img src="images/placeholder.jpg" alt="Coming Soon" class="w-full h-48 object-cover rounded-t-xl"/>
+        <div class="p-6">
+          <h2 class="text-2xl font-semibold mb-2">Coming Soon</h2>
+          <p class="text-gray-400">Additional products will be added here shortly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-10">
+    <div class="max-w-6xl mx-auto px-4 text-center space-y-2">
+      <p>M&amp;G Fencing Inc. | <?= new Date().getFullYear() ?> | 826 Bruno St, Azilda ON | 
+        <a href="mailto:fencing@mgfencing.ca" class="underline">fencing@mgfencing.ca</a> | 
+        <a href="tel:+17059834411" class="underline">(705) 983-4411</a>
+      </p>
+      <p>&copy; 2025 M&amp;G Fencing Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Fade out + navigate
+    document.querySelectorAll('a[href]').forEach(link => {
+      const url = new URL(link.href, location.href);
+      if (url.origin === location.origin) {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          document.body.classList.remove('fade-in');
+          document.body.classList.add('fade-out');
+          setTimeout(() => location.href = link.href, 400);
+        });
+      }
+    });
+    // Mobile nav
+    document.getElementById('nav-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
