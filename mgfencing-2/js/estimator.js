@@ -33,9 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     hasGates.addEventListener('change', () => { toggleSections(); update(); });
   }
 
-  heightRange.addEventListener('input', () => {
-    heightValue.textContent = `${heightRange.value}ft`;
-    update();
+  ['input', 'change'].forEach(evt => {
+    heightRange.addEventListener(evt, update);
   });
 
   [lengthInput, hasGates, gateCount, gateWidth, gateHeight, gateAuto,
@@ -54,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function update() {
+    heightValue.textContent = `${heightRange.value}ft`;
     const length = parseFloat(lengthInput.value);
     if (!length || length < 10) {
       lengthError.textContent = 'Minimum perimeter is 10 ft';
@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const info = prices.products[product] || {};
     let materialRate = info.material || 0;
     const height = parseInt(heightRange.value, 10) || 4;
-    const mult = height / 4
     let materialCost = materialRate * mult * length;
 
     if (product === 'chainlink' && document.getElementById('slats').checked) {
