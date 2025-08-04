@@ -113,8 +113,15 @@
           </label>
         </div>
 
+        <div id="gate-question" class="hidden">
+          <label class="inline-flex items-center">
+            <input type="checkbox" id="has-gates" class="form-checkbox text-green-600" />
+            <span class="ml-2">Include Gates?</span>
+          </label>
+        </div>
+
         <div id="gate-section" class="hidden space-y-4">
-          <label class="block font-medium">Gates</label>
+          <label class="block font-medium">Gate Details</label>
           <div class="grid md:grid-cols-3 gap-4">
             <div>
               <label for="gate-count" class="block text-sm">Number</label>
@@ -130,6 +137,10 @@
             <div>
               <label for="gate-width" class="block text-sm">Width (ft)</label>
               <input id="gate-width" type="number" min="3" value="3" class="w-full p-2 border rounded" />
+            </div>
+            <div>
+              <label for="gate-height" class="block text-sm">Height (ft)</label>
+              <input id="gate-height" type="number" min="3" value="4" class="w-full p-2 border rounded" />
             </div>
           </div>
           <label class="inline-flex items-center">

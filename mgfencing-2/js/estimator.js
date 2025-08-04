@@ -6,9 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const heightValue = document.getElementById('height-value');
   const chainOptions = document.getElementById('chainlink-options');
   const vinylOptions = document.getElementById('vinyl-options');
+  const gateQuestion = document.getElementById('gate-question');
+  const hasGates = document.getElementById('has-gates');
   const gateSection = document.getElementById('gate-section');
   const gateCount = document.getElementById('gate-count');
   const gateWidth = document.getElementById('gate-width');
+  const gateHeight = document.getElementById('gate-height');
   const gateAuto = document.getElementById('gate-auto');
   const summary = document.getElementById('summary');
   const lengthError = document.getElementById('length-error');
@@ -23,16 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const val = category.value;
     chainOptions.classList.toggle('hidden', val !== 'chainlink');
     vinylOptions.classList.toggle('hidden', val !== 'vinyl');
-    gateSection.classList.toggle('hidden', !['privacy','vinyl','chainlink','wrought_iron'].includes(val));
+    gateQuestion.classList.remove('hidden');
+    gateSection.classList.toggle('hidden', !hasGates.checked);
   }
   category.addEventListener('change', () => { toggleSections(); update(); });
+  if (hasGates) {
+    hasGates.addEventListener('change', () => { toggleSections(); update(); });
+  }
 
   heightRange.addEventListener('input', () => {
     heightValue.textContent = `${heightRange.value}ft`;
     update();
   });
 
-  [lengthInput, gateCount, gateWidth, gateAuto, document.getElementById('slats'), document.getElementById('vinyl-slats'), document.getElementById('chain-color'), document.getElementById('gate-type')].forEach(el => {
+  [lengthInput, hasGates, gateCount, gateWidth, gateHeight, gateAuto,
+    document.getElementById('slats'), document.getElementById('vinyl-slats'),
+    document.getElementById('chain-color'), document.getElementById('gate-type')
+  ].forEach(el => {
     if (el) el.addEventListener('input', update);
   });
 
@@ -56,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const product = category.value;
     const info = prices.products[product] || {};
-    const materialRate = info.material || 0;
+    let materialRate = info.material || 0;
     const height = parseInt(heightRange.value, 10) || 4;
     const mult = height / 4;
     let materialCost = materialRate * mult * length;
@@ -68,13 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
       materialCost += 7 * mult * length;
     }
 
-    const gates = parseInt(gateCount.value) || 0;
-    const gateWidthVal = parseFloat(gateWidth.value) || 0;
-    if (gates > 0) {
-      const gateRate = info.gate || 0;
-      materialCost += gates * gateWidthVal * gateRate;
-      if (gateAuto.checked) {
-        materialCost += gates * 1000;
+    if (hasGates && hasGates.checked) {
+      const gates = parseInt(gateCount.value) || 0;
+      const gateWidthVal = parseFloat(gateWidth.value) || 0;
+      const gateHeightVal = parseFloat(gateHeight.value) || height;
+      if (gates > 0) {
+        const gateRate = info.gate || 0;
+        materialCost += gates * gateWidthVal * gateHeightVal * gateRate;
+        if (gateAuto.checked) {
+          materialCost += gates * 1000;
+        }
       }
     }
 
