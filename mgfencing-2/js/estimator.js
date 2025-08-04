@@ -70,13 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const info = prices.products[product] || {};
     let materialRate = info.material || 0;
     const height = parseInt(heightRange.value, 10) || 4;
-    const mult = height / 4;
-    if (product === 'chainlink') {
-      const color = document.getElementById('chain-color').value;
-      if (color && color !== 'galvanized' && info.materialColored) {
-        materialRate = info.materialColored;
-      }
-    }
+    const mult = height / 4
     let materialCost = materialRate * mult * length;
 
     if (product === 'chainlink' && document.getElementById('slats').checked) {
