@@ -49,8 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
       lengthInput.setAttribute('aria-invalid', 'true');
       summary.querySelector('[data-materials]').textContent = '0.00';
       summary.querySelector('[data-total]').textContent = '0.00';
-      summary.querySelector('[data-posts]').textContent = '0';
-      summary.querySelector('[data-rails]').textContent = '0';
       return;
     }
     lengthError.classList.add('hidden');
@@ -60,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const info = prices.products[product] || {};
     const materialRate = info.material || 0;
     const height = parseInt(heightRange.value, 10) || 4;
-    const mult = {3:0.75,4:1,5:1.25,6:1.5}[height] || 1;
+    const mult = height / 4;
     let materialCost = materialRate * mult * length;
 
     if (product === 'chainlink' && document.getElementById('slats').checked) {
@@ -80,15 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    const posts = Math.ceil(length / 8) + 1;
-    const rails = posts * 2;
     const tax = materialCost * (prices.taxRate || 0);
     const total = materialCost + tax;
 
     summary.querySelector('[data-materials]').textContent = materialCost.toFixed(2);
     summary.querySelector('[data-total]').textContent = total.toFixed(2);
-    summary.querySelector('[data-posts]').textContent = posts;
-    summary.querySelector('[data-rails]').textContent = rails;
   }
 
   toggleSections();
