@@ -23,9 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const val = category.value;
     chainOptions.classList.toggle('hidden', val !== 'chainlink');
     vinylOptions.classList.toggle('hidden', val !== 'vinyl');
-    const showHeight = !['guide_rail','cable_rail','steel_rail'].includes(val);
-    document.getElementById('height-wrapper').classList.toggle('hidden', !showHeight);
-    gateSection.classList.toggle('hidden', !['picket','privacy','vinyl','chainlink'].includes(val));
+    gateSection.classList.toggle('hidden', !['privacy','vinyl','chainlink','wrought_iron'].includes(val));
   }
   category.addEventListener('change', () => { toggleSections(); update(); });
 
@@ -50,8 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
       lengthError.classList.remove('hidden');
       lengthInput.setAttribute('aria-invalid', 'true');
       summary.querySelector('[data-materials]').textContent = '0.00';
-      summary.querySelector('[data-labor]').textContent = '0.00';
-      summary.querySelector('[data-tax]').textContent = '0.00';
       summary.querySelector('[data-total]').textContent = '0.00';
       summary.querySelector('[data-posts]').textContent = '0';
       summary.querySelector('[data-rails]').textContent = '0';
@@ -63,15 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const product = category.value;
     const info = prices.products[product] || {};
     const materialRate = info.material || 0;
-    const laborRate = info.labor || 0;
-    let materialCost = materialRate * length;
-    let laborCost = laborRate * length;
+    const height = parseInt(heightRange.value, 10) || 4;
+    const mult = {3:0.75,4:1,5:1.25,6:1.5}[height] || 1;
+    let materialCost = materialRate * mult * length;
 
     if (product === 'chainlink' && document.getElementById('slats').checked) {
-      materialCost += 5 * length;
+      materialCost += 5 * mult * length;
     }
     if (product === 'vinyl' && document.getElementById('vinyl-slats').checked) {
-      materialCost += 7 * length;
+      materialCost += 7 * mult * length;
     }
 
     const gates = parseInt(gateCount.value) || 0;
@@ -79,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (gates > 0) {
       const gateRate = info.gate || 0;
       materialCost += gates * gateWidthVal * gateRate;
-      laborCost += gates * gateWidthVal * gateRate * 0.5;
       if (gateAuto.checked) {
         materialCost += gates * 1000;
       }
@@ -87,12 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const posts = Math.ceil(length / 8) + 1;
     const rails = posts * 2;
-    const tax = (materialCost + laborCost) * (prices.taxRate || 0);
-    const total = materialCost + laborCost + tax;
+    const tax = materialCost * (prices.taxRate || 0);
+    const total = materialCost + tax;
 
     summary.querySelector('[data-materials]').textContent = materialCost.toFixed(2);
-    summary.querySelector('[data-labor]').textContent = laborCost.toFixed(2);
-    summary.querySelector('[data-tax]').textContent = tax.toFixed(2);
     summary.querySelector('[data-total]').textContent = total.toFixed(2);
     summary.querySelector('[data-posts]').textContent = posts;
     summary.querySelector('[data-rails]').textContent = rails;

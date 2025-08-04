@@ -63,18 +63,15 @@
     <div class="md:flex md:space-x-8">
       <form id="estimator-form" class="bg-white p-8 rounded-xl shadow-md space-y-6 md:flex-1" novalidate>
         <div>
-          <label for="category" class="block mb-2 font-medium" title="Select fence or guard-rail type">Product Category</label>
+
+          <label for="category" class="block mb-2 font-medium" title="Select fence type">Product Category</label>
           <select id="category" class="w-full p-3 border rounded" aria-describedby="category-tip">
-            <option value="picket">🪵 Picket (Wood)</option>
-            <option value="privacy">🛡️ Privacy</option>
-            <option value="vinyl">🧱 Vinyl</option>
-            <option value="chainlink">⛓️ Chain-link</option>
-            <option value="wrought_iron">⚙️ Wrought Iron</option>
-            <option value="guide_rail">🚧 High Cable Guide Rail</option>
-            <option value="cable_rail">🪢 Cable Guide Rail</option>
-            <option value="steel_rail">🛤️ Steel Beam Guide Rail</option>
+            <option value="privacy">Privacy Fence</option>
+            <option value="vinyl">Vinyl Fencing</option>
+            <option value="chainlink">Chain Link</option>
+            <option value="wrought_iron">Wrought Iron</option>
           </select>
-          <p id="category-tip" class="text-sm text-gray-500">Choose your fence or guard-rail type.</p>
+          <p id="category-tip" class="text-sm text-gray-500">Choose your fence type.</p>
         </div>
 
         <div id="height-wrapper">
@@ -147,8 +144,6 @@
       <aside id="summary" class="mt-8 md:mt-0 md:w-1/3 bg-gray-50 p-6 rounded-xl shadow space-y-2" aria-live="polite">
         <h2 class="text-xl font-semibold mb-4">Cost Summary</h2>
         <p>Materials: $<span data-materials>0.00</span></p>
-        <p>Labor: $<span data-labor>0.00</span></p>
-        <p>Tax: $<span data-tax>0.00</span></p>
         <p class="font-bold">Total: $<span data-total>0.00</span></p>
         <p class="mt-4 text-sm text-gray-600">Posts needed: <span data-posts>0</span>, Rails needed: <span data-rails>0</span></p>
       </aside>
