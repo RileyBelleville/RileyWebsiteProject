@@ -1,0 +1,9 @@
+{
+  "taxRate": 0.13,
+  "products": {
+    "privacy": {"material": 30, "gate": 35},
+    "vinyl": {"material": 35, "gate": 40},
+    "chainlink": {"material": 20, "gate": 25},
+    "wrought_iron": {"material": 50, "gate": 50}
+  }
+}
