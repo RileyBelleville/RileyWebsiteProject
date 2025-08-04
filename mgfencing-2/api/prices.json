@@ -1,0 +1,13 @@
+{
+  "taxRate": 0.13,
+  "products": {
+    "picket": {"material": 25, "labor": 15, "gate": 30},
+    "privacy": {"material": 30, "labor": 18, "gate": 35},
+    "vinyl": {"material": 35, "labor": 20, "gate": 40},
+    "chainlink": {"material": 20, "labor": 12, "gate": 25},
+    "wrought_iron": {"material": 50, "labor": 25, "gate": 50},
+    "guide_rail": {"material": 45, "labor": 22, "gate": 0},
+    "cable_rail": {"material": 40, "labor": 20, "gate": 0},
+    "steel_rail": {"material": 50, "labor": 25, "gate": 0}
+  }
+}
