@@ -6,9 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const heightValue = document.getElementById('height-value');
   const chainOptions = document.getElementById('chainlink-options');
   const vinylOptions = document.getElementById('vinyl-options');
+  const gateQuestion = document.getElementById('gate-question');
+  const hasGates = document.getElementById('has-gates');
   const gateSection = document.getElementById('gate-section');
   const gateCount = document.getElementById('gate-count');
   const gateWidth = document.getElementById('gate-width');
+  const gateHeight = document.getElementById('gate-height');
   const gateAuto = document.getElementById('gate-auto');
   const summary = document.getElementById('summary');
   const lengthError = document.getElementById('length-error');
@@ -23,16 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const val = category.value;
     chainOptions.classList.toggle('hidden', val !== 'chainlink');
     vinylOptions.classList.toggle('hidden', val !== 'vinyl');
-    gateSection.classList.toggle('hidden', !['privacy','vinyl','chainlink','wrought_iron'].includes(val));
+    const allowGates = ['privacy','vinyl','chainlink','wrought_iron'].includes(val);
+    gateQuestion.classList.toggle('hidden', !allowGates);
+    gateSection.classList.toggle('hidden', !allowGates || !hasGates.checked);
   }
   category.addEventListener('change', () => { toggleSections(); update(); });
+  if (hasGates) {
+    hasGates.addEventListener('change', () => { toggleSections(); update(); });
+  }
 
   heightRange.addEventListener('input', () => {
     heightValue.textContent = `${heightRange.value}ft`;
     update();
   });
 
-  [lengthInput, gateCount, gateWidth, gateAuto, document.getElementById('slats'), document.getElementById('vinyl-slats'), document.getElementById('chain-color'), document.getElementById('gate-type')].forEach(el => {
+  [lengthInput, hasGates, gateCount, gateWidth, gateHeight, gateAuto,
+    document.getElementById('slats'), document.getElementById('vinyl-slats'),
+    document.getElementById('chain-color'), document.getElementById('gate-type')
+  ].forEach(el => {
     if (el) el.addEventListener('input', update);
   });
 
@@ -49,8 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
       lengthInput.setAttribute('aria-invalid', 'true');
       summary.querySelector('[data-materials]').textContent = '0.00';
       summary.querySelector('[data-total]').textContent = '0.00';
-      summary.querySelector('[data-posts]').textContent = '0';
-      summary.querySelector('[data-rails]').textContent = '0';
       return;
     }
     lengthError.classList.add('hidden');
@@ -58,9 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const product = category.value;
     const info = prices.products[product] || {};
-    const materialRate = info.material || 0;
+    let materialRate = info.material || 0;
     const height = parseInt(heightRange.value, 10) || 4;
-    const mult = {3:0.75,4:1,5:1.25,6:1.5}[height] || 1;
+    const mult = height / 4;
+    if (product === 'chainlink') {
+      const color = document.getElementById('chain-color').value;
+      if (color && color !== 'galvanized' && info.materialColored) {
+        materialRate = info.materialColored;
+      }
+    }
     let materialCost = materialRate * mult * length;
 
     if (product === 'chainlink' && document.getElementById('slats').checked) {
@@ -70,25 +85,24 @@ document.addEventListener('DOMContentLoaded', () => {
       materialCost += 7 * mult * length;
     }
 
-    const gates = parseInt(gateCount.value) || 0;
-    const gateWidthVal = parseFloat(gateWidth.value) || 0;
-    if (gates > 0) {
-      const gateRate = info.gate || 0;
-      materialCost += gates * gateWidthVal * gateRate;
-      if (gateAuto.checked) {
-        materialCost += gates * 1000;
+    if (hasGates && hasGates.checked) {
+      const gates = parseInt(gateCount.value) || 0;
+      const gateWidthVal = parseFloat(gateWidth.value) || 0;
+      const gateHeightVal = parseFloat(gateHeight.value) || height;
+      if (gates > 0) {
+        const gateRate = info.gate || 0;
+        materialCost += gates * gateWidthVal * gateHeightVal * gateRate;
+        if (gateAuto.checked) {
+          materialCost += gates * 1000;
+        }
       }
     }
 
-    const posts = Math.ceil(length / 8) + 1;
-    const rails = posts * 2;
     const tax = materialCost * (prices.taxRate || 0);
     const total = materialCost + tax;
 
     summary.querySelector('[data-materials]').textContent = materialCost.toFixed(2);
     summary.querySelector('[data-total]').textContent = total.toFixed(2);
-    summary.querySelector('[data-posts]').textContent = posts;
-    summary.querySelector('[data-rails]').textContent = rails;
   }
 
   toggleSections();
