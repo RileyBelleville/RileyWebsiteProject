@@ -69,12 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let materialRate = info.material || 0;
     const height = parseInt(heightRange.value, 10) || 4;
     const mult = height / 4;
-    if (product === 'chainlink') {
-      const color = document.getElementById('chain-color').value;
-      if (color && color !== 'galvanized' && info.materialColored) {
-        materialRate = info.materialColored;
-      }
-    }
     let materialCost = materialRate * mult * length;
 
     if (product === 'chainlink' && document.getElementById('slats').checked) {
