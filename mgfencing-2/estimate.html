@@ -76,7 +76,6 @@
 
         <div id="height-wrapper">
           <label for="height" class="block mb-2 font-medium">Height (ft)</label>
-          <input type="range" id="height" min="4" max="8" step="1" value="4" class="w-full" aria-describedby="height-tip" />
           <div class="text-sm text-gray-600" id="height-value">4ft</div>
           <p id="height-tip" class="sr-only">Use slider to select height.</p>
         </div>
@@ -118,37 +117,6 @@
             <input type="checkbox" id="has-gates" class="form-checkbox text-green-600" />
             <span class="ml-2">Include Gates?</span>
           </label>
-        </div>
-
-        <div id="gate-section" class="hidden">
-          <fieldset class="border rounded-lg p-4 space-y-4">
-            <legend class="font-medium px-2">Gate Details</legend>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <label for="gate-count" class="block text-sm text-gray-700">Number of Gates</label>
-                <input id="gate-count" type="number" min="0" value="0" class="mt-1 w-full p-2 border rounded" />
-              </div>
-              <div>
-                <label for="gate-type" class="block text-sm text-gray-700">Gate Type</label>
-                <select id="gate-type" class="mt-1 w-full p-2 border rounded">
-                  <option value="swing">Swing</option>
-                  <option value="slide">Slide</option>
-                </select>
-              </div>
-              <div>
-                <label for="gate-width" class="block text-sm text-gray-700">Width (ft)</label>
-                <input id="gate-width" type="number" min="3" value="3" class="mt-1 w-full p-2 border rounded" />
-              </div>
-              <div>
-                <label for="gate-height" class="block text-sm text-gray-700">Height (ft)</label>
-                <input id="gate-height" type="number" min="3" value="4" class="mt-1 w-full p-2 border rounded" />
-              </div>
-            </div>
-            <label class="inline-flex items-center">
-              <input type="checkbox" id="gate-auto" class="form-checkbox text-green-600" />
-              <span class="ml-2">Automation</span>
-            </label>
-          </fieldset>
         </div>
 
         <button type="button" id="update-btn" class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">Update Estimate</button>
