@@ -17,7 +17,7 @@ const DEFAULT_FEED = {
       ],
       gateCatalog: [
         { id: 'single-36-swing', label: 'Single 36" Swing', widthIn: 36, type: 'swing', price: 325 },
-        { id: 'double-144-swing', label: 'Double 12\' Driveway', widthIn: 144, type: 'swing', price: 790 }
+        { id: 'double-144-swing', label: "Double 12' Driveway", widthIn: 144, type: 'swing', price: 790 }
       ]
     }
   ],
@@ -38,13 +38,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const lengthError = document.getElementById('length-error');
   const summary = document.getElementById('summary');
   const pdfBtn = document.getElementById('pdf-btn');
-  const gateCountInput = document.getElementById('gate-count');
 
   let priceFeed = null;
 
   async function loadFeed() {
     try {
+      // Prefer module-relative URL so this works from any route/build setup
       const res = await fetch(new URL('../api/prices.json', import.meta.url));
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       priceFeed = await res.json();
     } catch (err) {
       console.warn('Price feed load failed, using defaults', err);
@@ -60,36 +61,56 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   category.addEventListener('change', () => { toggleSections(); update(); });
-  [lengthInput, heightRange, gateCountInput, document.getElementById('slats'), document.getElementById('vinyl-slats')]
+  [lengthInput, heightRange, document.getElementById('slats'), document.getElementById('vinyl-slats')]
     .forEach(el => { if (el) el.addEventListener('input', update); });
 
-  form.addEventListener('submit', e => { e.preventDefault(); update(); });
-  document.getElementById('update-btn').addEventListener('click', update);
-  pdfBtn.addEventListener('click', async () => {
-    if (!priceFeed) return;
-    const { jsPDF } = await import('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js');
-    const doc = new jsPDF();
-    doc.setFontSize(16);
-    doc.text('Fence Estimate', 10, 20);
-    const materials = summary.querySelector('[data-materials]').textContent;
-    const total = summary.querySelector('[data-total]').textContent;
-    doc.setFontSize(12);
-    doc.text(`Materials: $${materials}`, 10, 40);
-    doc.text(`Total: $${total}`, 10, 50);
-    doc.save('estimate.pdf');
-  });
+  if (form) {
+    form.addEventListener('submit', e => { e.preventDefault(); update(); });
+  }
+  const updateBtn = document.getElementById('update-btn');
+  if (updateBtn) updateBtn.addEventListener('click', update);
+
+  if (pdfBtn) {
+    pdfBtn.addEventListener('click', async () => {
+      if (!priceFeed || !summary) return;
+      try {
+        const { jsPDF } = await import('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js');
+        const doc = new jsPDF();
+        doc.setFontSize(16);
+        doc.text('Fence Estimate', 10, 20);
+
+        const materialsEl = summary.querySelector('[data-materials]');
+        const totalEl = summary.querySelector('[data-total]');
+        const materials = materialsEl ? materialsEl.textContent : '0.00';
+        const total = totalEl ? totalEl.textContent : '0.00';
+
+        doc.setFontSize(12);
+        doc.text(`Materials: $${materials}`, 10, 40);
+        doc.text(`Total: $${total}`, 10, 50);
+        doc.save('estimate.pdf');
+      } catch (e) {
+        console.error('PDF generation failed', e);
+      }
+    });
+  }
 
   function update() {
-    heightValue.textContent = `${heightRange.value}ft`;
+    if (heightValue && heightRange) {
+      heightValue.textContent = `${heightRange.value}ft`;
+    }
+
     const length = parseFloat(lengthInput.value);
     if (!length || length < 10) {
       lengthError.textContent = 'Minimum perimeter is 10 ft';
       lengthError.classList.remove('hidden');
       lengthInput.setAttribute('aria-invalid', 'true');
-      summary.querySelector('[data-materials]').textContent = '0.00';
-      summary.querySelector('[data-total]').textContent = '0.00';
+      const mEl = summary.querySelector('[data-materials]');
+      const tEl = summary.querySelector('[data-total]');
+      if (mEl) mEl.textContent = '0.00';
+      if (tEl) tEl.textContent = '0.00';
       return;
     }
+
     lengthError.classList.add('hidden');
     lengthInput.removeAttribute('aria-invalid');
     if (!priceFeed) return;
@@ -98,26 +119,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     const productId = productIdMap[category.value] || category.value;
 
     const addons = [];
-    if (category.value === 'chainlink' && document.getElementById('slats').checked) {
+    const slatsEl = document.getElementById('slats');
+    if (category.value === 'chainlink' && slatsEl && slatsEl.checked) {
       addons.push('privacy-slats');
     }
+
     const input = {
       productId,
       region: priceFeed.region,
       height: parseInt(heightRange.value, 10),
       footage: length,
-      gateCount: parseInt(gateCountInput.value, 10) || 0,
+      gates: [],
       addons,
       terrain: 'flat'
     };
 
     try {
       const result = estimate(input, priceFeed);
-      const materials = result.items.base + result.items.gates + result.items.addons;
-      summary.querySelector('[data-materials]').textContent = materials.toFixed(2);
-      summary.querySelector('[data-total]').textContent = result.total.toFixed(2);
+      const materials = (result.items.base || 0) + (result.items.gates || 0) + (result.items.addons || 0);
+      const mEl = summary.querySelector('[data-materials]');
+      const tEl = summary.querySelector('[data-total]');
+      if (mEl) mEl.textContent = materials.toFixed(2);
+      if (tEl) tEl.textContent = result.total.toFixed(2);
     } catch (err) {
-      console.error(err);
+      console.error('Estimation failed', err);
     }
   }
 
