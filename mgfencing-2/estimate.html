@@ -76,6 +76,7 @@
 
         <div id="height-wrapper">
           <label for="height" class="block mb-2 font-medium">Height (ft)</label>
+          <input id="height" type="range" min="4" max="8" step="1" value="4" class="w-full" aria-describedby="height-tip" />
           <div class="text-sm text-gray-600" id="height-value">4ft</div>
           <p id="height-tip" class="sr-only">Use slider to select height.</p>
         </div>
@@ -126,6 +127,7 @@
         <h2 class="text-xl font-semibold mb-4">Cost Summary</h2>
         <p>Materials: $<span data-materials>0.00</span></p>
         <p class="font-bold">Total: $<span data-total>0.00</span></p>
+        <button type="button" id="pdf-btn" class="mt-4 w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition">Download PDF</button>
       </aside>
     </div>
   </main>
@@ -138,6 +140,6 @@
   </footer>
   <!-- Load core functionality (fades, nav toggle, section reveal, dynamic year) -->
   <script src="js/main.js"></script>
-  <script type="module" src="js/estimator.js"></script>
+  <script type="module" src="js/estimator-ui.js"></script>
 </body>
 </html>
