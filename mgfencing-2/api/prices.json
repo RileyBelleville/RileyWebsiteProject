@@ -1,9 +1,26 @@
 {
-  "taxRate": 0.13,
-  "products": {
-    "privacy": {"material": 30, "gate": 35},
-    "vinyl": {"material": 35, "gate": 40},
-    "chainlink": {"material": 20, "materialColored": 25, "gate": 25},
-    "wrought_iron": {"material": 50, "gate": 50}
-  }
+  "version": "2025.08.15",
+  "region": "ON",
+  "products": [
+    {
+      "id": "chain-link",
+      "label": "Chain-Link Fence",
+      "heights": [4, 5, 6, 8],
+      "colours": ["Galvanized", "Black", "Green"],
+      "basePerFt": {"4": 28, "5": 31, "6": 34, "8": 49},
+      "postSpacingFt": 8,
+      "addons": [
+        {"id": "privacy-slats", "label": "Privacy Slats", "pricePerFt": 12},
+        {"id": "top-rail-upgrade", "label": "Top Rail Upgrade", "pricePerFt": 3}
+      ],
+      "gateCatalog": [
+        {"id": "single-36-swing", "label": "Single 36\" Swing", "widthIn": 36, "type": "swing", "price": 325},
+        {"id": "double-144-swing", "label": "Double 12' Driveway", "widthIn": 144, "type": "swing", "price": 790}
+      ]
+    }
+  ],
+  "taxes": [{"type": "HST", "rate": 0.13}],
+  "labour": [{"id": "base-per-ft", "rate": 12}],
+  "surcharges": [{"id": "sloped-terrain", "mul": 1.08}],
+  "discounts": [{"id": "volume-200ft", "thresholdFt": 200, "mul": 0.97}]
 }
